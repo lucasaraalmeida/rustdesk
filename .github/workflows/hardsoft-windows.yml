@@ -4,6 +4,9 @@ name: Hardsoft Suporte - Windows
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 env:
   RUST_VERSION: "1.75"
   SCITER_RUST_VERSION: "1.75"
@@ -141,3 +144,12 @@ jobs:
           name: HardsoftSuporte-windows
           path: ./output/HardsoftSuporte.exe
           if-no-files-found: error
+
+      - name: Publicar no link fixo de download
+        uses: softprops/action-gh-release@de2c0eb89ae2a093876385947365aca7b0e5f844 # v1
+        with:
+          tag_name: suporte
+          name: Hardsoft Suporte
+          body: "Baixe o HardsoftSuporte.exe abaixo, abra e informe o ID e a senha para o técnico da Hardsoft."
+          make_latest: true
+          files: ./output/HardsoftSuporte.exe
