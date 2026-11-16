@@ -2507,6 +2507,12 @@ pub fn rustdesk_interval(i: Interval) -> ThrottledInterval {
 }
 
 pub fn load_custom_client() {
+    // Hardsoft: marca e modo de suporte rápido (só recebe conexões).
+    *config::APP_NAME.write().unwrap() = "HardsoftSuporte".to_owned();
+    config::HARD_SETTINGS
+        .write()
+        .unwrap()
+        .insert("conn-type".to_owned(), "incoming".to_owned());
     #[cfg(debug_assertions)]
     if let Ok(data) = std::fs::read_to_string("./custom.txt") {
         read_custom_client(data.trim());
