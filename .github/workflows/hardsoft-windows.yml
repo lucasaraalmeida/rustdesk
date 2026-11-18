@@ -1,8 +1,10 @@
 name: Hardsoft Suporte - Windows
 
-# Rode manualmente em Actions > "Hardsoft Suporte - Windows" > Run workflow.
+# Compila sozinho a cada envio para o master (ou manualmente em Actions > Run workflow).
 on:
   workflow_dispatch:
+  push:
+    branches: [master]
 
 permissions:
   contents: write
